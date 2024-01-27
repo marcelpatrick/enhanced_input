@@ -37,4 +37,16 @@
 - Get Y Axis
 - Add movement input
 - - Get the forward direction in the **Unreal Engine** world -> _in Unreal Engine Forward = X_
-  - **Invert Axis**: Map the Unreal Engine forward to the **Game World** -> _according to game standards, player input devices are mapped with Forward = Y_ 
+  - **Invert Axis**: Map the Unreal Engine forward to the **Game World** -> _according to game standards, player input devices are mapped with Forward = Y_
+
+### Set Context Mapping and Input assets in the Engine
+- In Unreal Engine
+- Create a context mapping asset
+- - add a mapping
+  - - map to a key
+    - - add a modifier
+      - - use the Swizzle input axis values modifier to map the W key to the Y axis in a 2D enviornment
+       
+## Link to the BP
+- in the Character BP, assign the Context Mapping and the Input assets to the character.
+    
