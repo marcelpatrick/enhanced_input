@@ -36,4 +36,5 @@
 - Get X Axis
 - Get Y Axis
 - Add movement input
-- - Add Forward direction: Use AddMovementInput and pass the ForwardDirection and the Y 2d Movement Vector
+- - Get the forward direction in the **Unreal Engine** world -> _in Unreal Engine Forward = X_
+  - **Invert Axis**: Map the Unreal Engine forward to the **Game World** -> _according to game standards, player input devices are mapped with Forward = Y_ 
