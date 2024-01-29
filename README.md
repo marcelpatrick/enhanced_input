@@ -21,31 +21,35 @@
           - Types of Subsystems: There are various types of subsystems, including Engine Subsystems (global across the game), GameInstance Subsystems (tied to the game instance), and Player Subsystems (tied to a specific player).
           - A Player Subsystem is a type of subsystem that is specifically tied to an individual player. In multiplayer games or games that handle multiple player profiles, each player would have their own instance of a Player Subsystem.
           - Use Cases: This allows for functionalities that are unique to each player, such as specific settings, states, or input handling, to be managed independently for each player._
-``
+
 
   ####Implementation:
   - On Begin Play
     - Declare a player controller var by taking the controller and casting it to APlayerController type
     - Use the player controller var to get the local player 
-      - Use the local player to get the subsystem and Declare a Subsystem var
-       - Use use the subsystem var to add a mapping context
+      - Declare a **UEnhancedInputLocalPlayerSubsystem** var by getting the subsystem, converting it to a **UEnhancedInputLocalPlayerSubsystem** var and passing the local player var as a param
+       - Use use the subsystem var to add a mapping context passing my mapping context var as a param
                  
 ### BIND functionality to input
 - cpp
-- SetupPlayerInputComponent function takes a PlayerInputComponent as input
+- in the SetupPlayerInputComponent function:
 - - Take **PlayerInputComponent** and Cast it to **EnhancedInputComponent**
-  - Use **EnhancedInputComponent** to Bind Action calling the action function (Move)
+  - Use **EnhancedInputComponent** to Bind Action passing my input action variable calling the action function (Move) by its address
+  - ```
+    The ampersand & here is used to get the address of the Move member function in the AMyCharacter_2 class.
+    ```
  
 ### Move function
 - cpp
-- The move function takes a **FInputActionValue** as input
-- Instantiate a FVector2D variable
-- Find out which way is forward by getting the Yaw rotation
-- Get X Axis
-- Get Y Axis
-- Add movement input
-- - Get the forward direction in the **Unreal Engine** world -> _in Unreal Engine Forward = X_
-  - **Invert Axis**: Map the Unreal Engine forward to the **Game World** -> _according to game standards, player input devices are mapped with Forward = Y_
+- Instantiate a FVector2D variable by using the input action to get a vector 2d
+- Find out which way is forward by getting the control rotation and then the Yaw rotation
+
+- - Get the forward direction in the **Unreal Engine** world -> _in Unreal Engine Forward is the X axis_
+  - - Get X Axis and assign it to a foward direction FVector var - use **FRotationMatrix** and **GetUnitAxis**
+  - - Get Y Axis and assing it to a right direction FVector var - use **FRotationMatrix** and **GetUnitAxis**
+  - - Add movement
+    - - Add movement input inverting the axis. Pass in the forwar direction to the Y Vector2d axis and the right direction to the X Vector2d axis
+  - - - **Invert Axis**: Map the Unreal Engine forward to the **Game World** -> _according to game standards, player input devices are mapped with Forward = Y_
 
 ### Set Context Mapping and Input assets in the Engine
 - In Unreal Engine
@@ -57,4 +61,6 @@
        
 ## Link to the BP
 - in the Character BP, assign the Context Mapping and the Input assets to the character.
+- Create an input action and make it a value type vector 2d
+- Create a mapping context
     
