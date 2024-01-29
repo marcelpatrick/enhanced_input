@@ -21,14 +21,14 @@
           - Types of Subsystems: There are various types of subsystems, including Engine Subsystems (global across the game), GameInstance Subsystems (tied to the game instance), and Player Subsystems (tied to a specific player).
           - A Player Subsystem is a type of subsystem that is specifically tied to an individual player. In multiplayer games or games that handle multiple player profiles, each player would have their own instance of a Player Subsystem.
           - Use Cases: This allows for functionalities that are unique to each player, such as specific settings, states, or input handling, to be managed independently for each player._
-``` 
-        
-          ####Implementation:
-          - On Begin Play
-            - Declare a player controller var by taking the controller and casting it to APlayerController type
-            - Use the player controller var to get the local player 
-              - Use the local player to get the subsystem and Declare a Subsystem var
-               - Use use the subsystem var to add a mapping context
+``
+
+  ####Implementation:
+  - On Begin Play
+    - Declare a player controller var by taking the controller and casting it to APlayerController type
+    - Use the player controller var to get the local player 
+      - Use the local player to get the subsystem and Declare a Subsystem var
+       - Use use the subsystem var to add a mapping context
                  
 ### BIND functionality to input
 - cpp
