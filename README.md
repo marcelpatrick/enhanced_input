@@ -1,11 +1,11 @@
 # enhanced_input
 
-##Preparation
+## Preparation
 - create a c++ character class
 - create a BP based on this class
 - - Include a skeletal mesh
 
-##Development
+## Development
 - in the c++ class
     - header file
         - instantiate a mapping context var and expose it to the BP
@@ -23,7 +23,7 @@
           - Use Cases: This allows for functionalities that are unique to each player, such as specific settings, states, or input handling, to be managed independently for each player._
 
 
-  ####Implementation:
+  #### Implementation:
   - On Begin Play
     - Declare a player controller var by taking the controller and casting it to APlayerController type
     - Use the player controller var to get the local player 
@@ -60,7 +60,21 @@
       - - use the Swizzle input axis values modifier to map the W key to the Y axis in a 2D enviornment
        
 ## Link to the BP
-- in the Character BP, assign the Context Mapping and the Input assets to the character.
+
+### Input Action
 - Create an input action and make it a value type vector 2d
+
+### Input Mapping Context
 - Create a mapping context
+- Add mapping
+- Select my input action in the mapping dropdown
+- Select the key for Forward motion, add a modifier and select "swizzle"
+- Select the key for Backward motion, add modifier and select "swizzle", add another modifier and select negate (the oposite of forward)
+```
+Swizzle inverts the X and Y axis. In UE the X axis is the vertical axis (forward, backward) in game convention it is the Y axis that controls that
+```
+- Select the key for Right motion
+- Select the key for Left motion, add modifier and select negate (the oposite of right)
+  
+- in the Character BP, assign the Context Mapping and the Input assets to the character.
     
